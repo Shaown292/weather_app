@@ -1,9 +1,9 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:get/get.dart';
+import 'package:weather_app/app/modules/home/widget/clipPath.dart';
 import 'package:weather_app/constant/image_path/imagePath.dart';
 import 'package:weather_app/constant/textStyle.dart';
 import '../controllers/home_controller.dart';
@@ -15,7 +15,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: Get.width ,
+        width: Get.width,
         height: Get.height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
@@ -107,8 +107,7 @@ class HomeView extends GetView<HomeController> {
                       itemBuilder: (BuildContext context, int index) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child:
-                          Container(
+                          child: Container(
                               height: Get.height * 0.2,
                               width: Get.width * 0.2,
                               padding: const EdgeInsets.symmetric(
@@ -128,7 +127,7 @@ class HomeView extends GetView<HomeController> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceAround,
+                                    MainAxisAlignment.spaceAround,
                                 children: [
                                   const Text("Now",
                                       style: AppTextStyle.circularW400size16),
@@ -152,19 +151,43 @@ class HomeView extends GetView<HomeController> {
             const SizedBox(
               height: 30,
             ),
-            Expanded(
-              child: ClipPath(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [Color(0xff97ABFF), Color(0xff123597)],
+            Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                ClipPath(
+                  clipper: CustomClipPath(),
+                  child: Container(
+                    height: Get.height * 0.2,
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [Color(0xff97ABFF), Color(0xff123597)],
+                      ),
                     ),
                   ),
-                
                 ),
-              ),
+                Positioned(
+                  top: -20,
+                  left: Get.width * 0.35,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Container(
+                      height: 80,
+                      width: 90,
+                      decoration: const BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [Color(0xff97ABFF), Color(0xff123597)],
+                            ),
+
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
