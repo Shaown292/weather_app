@@ -113,7 +113,7 @@ class HomeView extends GetView<HomeController> {
                               controller.isLoadingForNextDay.value ? const Center(
                                 child: CircularProgressIndicator(
                                   color: Colors.blueAccent,
-                                ),) : controller.fetchWeatherDataForNextDay();
+                                ),) : controller.fetchWeatherData(controller.day= controller.day + 1);
                             },
                             child: Container(
                               padding: const EdgeInsets.symmetric(
